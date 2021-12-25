@@ -26,7 +26,6 @@
 我们可以构造的最长的回文串是&quot;dccaccd&quot;, 它的长度是 7。
 </pre>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -41,7 +40,7 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         n = len(s)
-        counter = collections.Counter(s)
+        counter = Counter(s)
         odd_cnt = sum(e % 2 for e in counter.values())
         return n if odd_cnt == 0 else n - odd_cnt + 1
 ```
@@ -79,10 +78,10 @@ function longestPalindrome(s: string): number {
     }
     for (let i = 65; i < 128; i++) {
         let count = record[i];
-        ans += (count % 2 == 0 ? count : count - 1);
+        ans += count % 2 == 0 ? count : count - 1;
     }
     return ans < s.length ? ans + 1 : ans;
-};
+}
 ```
 
 ### **C++**

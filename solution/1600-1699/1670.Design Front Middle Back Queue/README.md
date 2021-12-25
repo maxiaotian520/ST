@@ -76,8 +76,8 @@ q.popFront();     // 返回 -1 -> [] （队列为空）
 class FrontMiddleBackQueue:
 
     def __init__(self):
-        self.left = collections.deque()
-        self.right = collections.deque()
+        self.left = deque()
+        self.right = deque()
 
     def pushFront(self, val: int) -> None:
         self.left.appendleft(val)
@@ -223,34 +223,34 @@ class FrontMiddleBackQueue {
 ### **JavaScript**
 
 ```js
-var FrontMiddleBackQueue = function() {
+var FrontMiddleBackQueue = function () {
     this.left = [];
     this.right = [];
 };
 
-/** 
+/**
  * @param {number} val
  * @return {void}
  */
-FrontMiddleBackQueue.prototype.pushFront = function(val) {
+FrontMiddleBackQueue.prototype.pushFront = function (val) {
     this.left.unshift(val);
     this.rebalance();
 };
 
-/** 
+/**
  * @param {number} val
  * @return {void}
  */
-FrontMiddleBackQueue.prototype.pushMiddle = function(val) {
+FrontMiddleBackQueue.prototype.pushMiddle = function (val) {
     this.left.push(val);
     this.rebalance();
 };
 
-/** 
+/**
  * @param {number} val
  * @return {void}
  */
-FrontMiddleBackQueue.prototype.pushBack = function(val) {
+FrontMiddleBackQueue.prototype.pushBack = function (val) {
     this.right.push(val);
     this.rebalance();
 };
@@ -258,7 +258,7 @@ FrontMiddleBackQueue.prototype.pushBack = function(val) {
 /**
  * @return {number}
  */
-FrontMiddleBackQueue.prototype.popFront = function() {
+FrontMiddleBackQueue.prototype.popFront = function () {
     if (this.isEmpty()) return -1;
     let num = this.left.length == 0 ? this.right.shift() : this.left.shift();
     this.rebalance();
@@ -268,9 +268,12 @@ FrontMiddleBackQueue.prototype.popFront = function() {
 /**
  * @return {number}
  */
-FrontMiddleBackQueue.prototype.popMiddle = function() {
+FrontMiddleBackQueue.prototype.popMiddle = function () {
     if (this.isEmpty()) return -1;
-    let num = this.left.length == this.right.length ? this.left.pop() : this.right.shift();
+    let num =
+        this.left.length == this.right.length
+            ? this.left.pop()
+            : this.right.shift();
     this.rebalance();
     return num;
 };
@@ -278,7 +281,7 @@ FrontMiddleBackQueue.prototype.popMiddle = function() {
 /**
  * @return {number}
  */
-FrontMiddleBackQueue.prototype.popBack = function() {
+FrontMiddleBackQueue.prototype.popBack = function () {
     if (this.isEmpty()) return -1;
     let num = this.right.pop();
     this.rebalance();
@@ -292,11 +295,11 @@ FrontMiddleBackQueue.prototype.rebalance = function () {
     while (this.right.length > this.left.length + 1) {
         this.left.push(this.right.shift());
     }
-}
+};
 
 FrontMiddleBackQueue.prototype.isEmpty = function () {
     return this.left.length == 0 && this.right.length == 0;
-}
+};
 
 /**
  * Your FrontMiddleBackQueue object will be instantiated and called as such:

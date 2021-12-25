@@ -47,7 +47,6 @@
 	<li><code>-10^3 &lt;= arr[i] &lt;= 10^3</code></li>
 </ul>
 
-
 ## Solutions
 
 <!-- tabs:start -->
@@ -57,7 +56,7 @@
 ```python
 class Solution:
     def checkIfExist(self, arr: List[int]) -> bool:
-        map = collections.defaultdict(int)
+        map = defaultdict(int)
         for i, num in enumerate(arr):
             map[num] = i
         for i, num in enumerate(arr):
@@ -90,7 +89,7 @@ class Solution {
 function checkIfExist(arr: number[]): boolean {
     for (let i = arr.length - 1; i >= 0; --i) {
         let cur = arr[i];
-        let t1 = 2 * cur; 
+        let t1 = 2 * cur;
         if (arr.includes(t1) && arr.indexOf(t1) != i) {
             return true;
         }
@@ -100,7 +99,7 @@ function checkIfExist(arr: number[]): boolean {
         }
     }
     return false;
-};
+}
 ```
 
 ### **C++**

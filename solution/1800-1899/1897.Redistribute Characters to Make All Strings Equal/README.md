@@ -40,7 +40,6 @@
 	<li><code>words[i]</code> 由小写英文字母组成</li>
 </ul>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -54,7 +53,7 @@
 ```python
 class Solution:
     def makeEqual(self, words: List[str]) -> bool:
-        counter = collections.Counter()
+        counter = Counter()
         for word in words:
             for c in word:
                 counter[c] += 1
@@ -104,7 +103,7 @@ function makeEqual(words: string[]): boolean {
         }
     }
     return true;
-};
+}
 ```
 
 ### **C++**

@@ -44,7 +44,6 @@
 
 <p>注意：本题与主站 438&nbsp;题相同：&nbsp;<a href="https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/" style="background-color: rgb(255, 255, 255);">https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/</a></p>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -149,6 +148,40 @@ func check(window []int) bool {
 	}
 	return true
 }
+```
+
+### **C++**
+
+```cpp
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> res;
+        vector<int> hash(26, 0), zero(26, 0);
+
+        if (p.size() > s.size())
+            return res;
+
+        for (int i = 0; i < p.size(); i++) {
+            hash[p[i] - 'a']++;
+            hash[s[i] - 'a']--;
+        }
+
+        if (hash == zero)
+            res.push_back(0);
+
+        for (int i = p.size(); i < s.size(); i++) {
+            hash[s[i] - 'a']--;
+            hash[s[i - p.size()] - 'a']++;
+
+            if (hash == zero)
+                res.push_back(i - p.size() + 1);
+        }    
+
+
+        return res;
+    }
+};
 ```
 
 ### **...**

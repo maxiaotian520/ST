@@ -19,7 +19,7 @@
 <b>输出：</b>[3,3,5,5,6,7]
 <b>解释：</b>
 滑动窗口的位置                最大值
----------------               -----
+---------------             -----
 [1  3  -1] -3  5  3  6  7       <strong>3</strong>
  1 [3  -1  -3] 5  3  6  7       <strong>3</strong>
  1  3 [-1  -3  5] 3  6  7      <strong> 5</strong>
@@ -65,7 +65,6 @@
 	<li><code>1 <= k <= nums.length</code></li>
 </ul>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -94,7 +93,7 @@ for i in range(n):
 ```python
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        q, res = collections.deque(), []
+        q, res = deque(), []
         for i, num in enumerate(nums):
             if q and i - k + 1 > q[0]:
                 q.popleft()
@@ -147,7 +146,8 @@ class Solution {
 var maxSlidingWindow = function (nums, k) {
     let len = nums.length;
     if (len < k) return [];
-    let res = [], win = [];
+    let res = [],
+        win = [];
     for (let i = 0; i < k; i++) {
         while (win.length > 0 && nums[i] >= nums[win[win.length - 1]])
             win.pop();
@@ -157,8 +157,7 @@ var maxSlidingWindow = function (nums, k) {
     for (let i = k; i < len; i++) {
         while (win.length > 0 && nums[i] >= nums[win[win.length - 1]])
             win.pop();
-        if (win.length > 0 && win[0] < i - k + 1)
-            win.shift();
+        if (win.length > 0 && win[0] < i - k + 1) win.shift();
         win.push(i);
         res.push(nums[win[0]]);
     }

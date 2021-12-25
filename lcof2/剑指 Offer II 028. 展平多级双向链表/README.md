@@ -94,7 +94,6 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 430&nbsp;题相同：&nbsp;<a href="https://leetcode-cn.com/problems/flatten-a-multilevel-doubly-linked-list/">https://leetcode-cn.com/problems/flatten-a-multilevel-doubly-linked-list/</a></p>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -185,6 +184,58 @@ class Solution {
         preOrder(next);
     }
 }
+```
+
+### **C++**
+
+```cpp
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* prev;
+    Node* next;
+    Node* child;
+};
+*/
+
+class Solution {
+public:
+    Node* flatten(Node* head) {
+        flattenGetTail(head);
+        return head;
+    }
+
+    Node* flattenGetTail(Node* head) {
+        Node* cur = head;
+        Node* tail = nullptr;
+
+        while (cur) {
+            Node* next = cur->next;
+            if (cur->child) {
+                Node* child = cur->child;
+                Node* childTail = flattenGetTail(cur->child);
+
+                cur->child = nullptr;
+                cur->next = child;
+                child->prev = cur;
+                childTail->next = next;
+
+                if (next)
+                    next->prev = childTail;
+
+                tail = childTail;
+            } else {
+                tail = cur;
+            }
+
+            cur = next;
+        }
+
+        return tail;
+    }
+};
 ```
 
 ### **...**

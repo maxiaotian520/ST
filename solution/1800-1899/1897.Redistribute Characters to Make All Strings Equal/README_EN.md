@@ -38,7 +38,6 @@ All the strings are now equal to &quot;abc&quot;, so return <code>true</code>.
 	<li><code>words[i]</code> consists of lowercase English letters.</li>
 </ul>
 
-
 ## Solutions
 
 <!-- tabs:start -->
@@ -48,7 +47,7 @@ All the strings are now equal to &quot;abc&quot;, so return <code>true</code>.
 ```python
 class Solution:
     def makeEqual(self, words: List[str]) -> bool:
-        counter = collections.Counter()
+        counter = Counter()
         for word in words:
             for c in word:
                 counter[c] += 1
@@ -96,7 +95,7 @@ function makeEqual(words: string[]): boolean {
         }
     }
     return true;
-};
+}
 ```
 
 ### **C++**

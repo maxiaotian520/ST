@@ -43,7 +43,7 @@
 ```python
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        last = collections.defaultdict(int)
+        last = defaultdict(int)
         n = len(s)
         for i in range(n):
             last[s[i]] = i
@@ -92,7 +92,8 @@ function partitionLabels(s: string): number[] {
         last[s.charCodeAt(i)] = i;
     }
     let ans = [];
-    let left = 0, right = 0;
+    let left = 0,
+        right = 0;
     for (let i = 0; i < n; i++) {
         right = Math.max(right, last[s.charCodeAt(i)]);
         if (i == right) {
@@ -101,7 +102,7 @@ function partitionLabels(s: string): number[] {
         }
     }
     return ans;
-};
+}
 ```
 
 ### **C++**

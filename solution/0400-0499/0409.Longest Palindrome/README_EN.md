@@ -40,7 +40,6 @@ One longest palindrome that can be built is &quot;dccaccd&quot;, whose length is
 	<li><code>s</code> consists of lowercase <strong>and/or</strong> uppercase English&nbsp;letters only.</li>
 </ul>
 
-
 ## Solutions
 
 <!-- tabs:start -->
@@ -51,7 +50,7 @@ One longest palindrome that can be built is &quot;dccaccd&quot;, whose length is
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         n = len(s)
-        counter = collections.Counter(s)
+        counter = Counter(s)
         odd_cnt = sum(e % 2 for e in counter.values())
         return n if odd_cnt == 0 else n - odd_cnt + 1
 ```
@@ -87,10 +86,10 @@ function longestPalindrome(s: string): number {
     }
     for (let i = 65; i < 128; i++) {
         let count = record[i];
-        ans += (count % 2 == 0 ? count : count - 1);
+        ans += count % 2 == 0 ? count : count - 1;
     }
     return ans < s.length ? ans + 1 : ans;
-};
+}
 ```
 
 ### **C++**

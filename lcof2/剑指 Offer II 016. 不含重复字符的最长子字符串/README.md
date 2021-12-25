@@ -53,7 +53,6 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 3&nbsp;题相同：&nbsp;<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/</a></p>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -133,6 +132,34 @@ func max(a, b int) int {
 	}
 	return b
 }
+```
+
+### **C++**
+
+```cpp
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if (s.size() == 0)
+            return 0;
+
+        int left = 0;
+        int maxlen = 0;
+        unordered_set<char> hash;
+
+        for (int right = 0; right < s.size(); right++) {
+            while (hash.find(s[right]) != hash.end()) {
+                hash.erase(s[left]);
+                left++;
+            }
+
+            hash.insert(s[right]);
+            maxlen = max(maxlen, right - left + 1);
+        }
+
+        return maxlen;
+    }
+};
 ```
 
 ### **...**

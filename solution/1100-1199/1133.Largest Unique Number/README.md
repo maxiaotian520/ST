@@ -52,7 +52,7 @@
 ```python
 class Solution:
     def largestUniqueNumber(self, A: List[int]) -> int:
-        counter = collections.Counter(A)
+        counter = Counter(A)
         for i in range(1000, -1, -1):
             if counter[i] == 1:
                 return i
@@ -88,16 +88,16 @@ class Solution {
  * @return {number}
  */
 var largestUniqueNumber = function (A) {
-  let counter = {};
-  for (const a of A) {
-    counter[a] = (counter[a] || 0) + 1;
-  }
-  for (let i = 1000; i >= 0; --i) {
-    if (counter[i] == 1) {
-      return i;
+    let counter = {};
+    for (const a of A) {
+        counter[a] = (counter[a] || 0) + 1;
     }
-  }
-  return -1;
+    for (let i = 1000; i >= 0; --i) {
+        if (counter[i] == 1) {
+            return i;
+        }
+    }
+    return -1;
 };
 ```
 

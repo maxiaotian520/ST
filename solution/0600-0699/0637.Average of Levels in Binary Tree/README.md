@@ -31,7 +31,6 @@
 	<li>节点值的范围在32位有符号整数范围内。</li>
 </ul>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -52,7 +51,7 @@
 class Solution:
     def averageOfLevels(self, root: TreeNode) -> List[float]:
         res = []
-        q = collections.deque([root])
+        q = deque([root])
         while q:
             n = len(q)
             s = 0
@@ -126,7 +125,7 @@ class Solution {
  * @param {TreeNode} root
  * @return {number[]}
  */
-var averageOfLevels = function(root) {
+var averageOfLevels = function (root) {
     let res = [];
     let queue = [root];
     while (queue.length > 0) {
